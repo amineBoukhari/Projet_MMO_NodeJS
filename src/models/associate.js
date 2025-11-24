@@ -1,4 +1,5 @@
 import sequelize from '../config/sequelize.js';
+import CharacterType from '../module/characterType/characterType.model.js';
 import User from '../module/user/user.model.js';
 import Character from '../module/character/character.model.js';
 import CharacterType from '../module/characterType/characterType.model.js';
