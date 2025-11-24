@@ -49,7 +49,7 @@ export const getMyCharacters = async (req, res) => {
 export const getCharacterById = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user?.id;
+    const userId = req.user?.id || 2;
 
     const character = await Character.findOne({
       where: { 
