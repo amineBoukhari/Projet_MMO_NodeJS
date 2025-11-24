@@ -1,28 +1,38 @@
 import sequelize from '../config/sequelize.js';
 import User from '../module/user/user.model.js';
-
-// Importer ici tous vos autres modèles quand vous les créerez
-// import Character from '../module/character/character.model.js';
-// import Item from '../module/item/item.model.js';
-// etc...
+import Character from '../module/character/character.model.js';
+import CharacterType from '../module/characterType/characterType.model.js';
 
 // Définir les associations ici
 const models = {
   User,
-  // Character,
-  // Item,
+  Character,
+  CharacterType,
 };
 
-// Exemple d'associations (à décommenter quand vous aurez d'autres modèles)
-// User.hasMany(Character, { 
-//   as: 'characters',
-//   foreignKey: 'userId'
-// });
-// 
-// Character.belongsTo(User, {
-//   as: 'user',
-//   foreignKey: 'userId'
-// });
+// Relations User <-> Character
+User.hasMany(Character, { 
+  as: 'characters',
+  foreignKey: 'joueurId',
+  onDelete: 'CASCADE'
+});
+
+Character.belongsTo(User, {
+  as: 'joueur',
+  foreignKey: 'joueurId'
+});
+
+// Relations CharacterType <-> Character
+CharacterType.hasMany(Character, {
+  as: 'characters',
+  foreignKey: 'typeId',
+  onDelete: 'RESTRICT'
+});
+
+Character.belongsTo(CharacterType, {
+  as: 'type',
+  foreignKey: 'typeId'
+});
 
 export { sequelize };
 export default models;
