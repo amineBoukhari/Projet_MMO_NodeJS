@@ -5,10 +5,6 @@ import './models/associate.js'; // Import des associations
 import logger from './config/logger.js'; // Logger Winston
 import config from './config/config.js'; // Configuration (PORT, etc.)
 import initialData from './config/initialData.js'; // Function to create default data
-// Enregistre les modèles Map et Case auprès de Sequelize avant le sync
-import './module/map/map.model.js';
-import './module/case/case.model.js';
-import './module/map/map.model.js';
 
 logger.info("🚀 Server is starting...");
 
