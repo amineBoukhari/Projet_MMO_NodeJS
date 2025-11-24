@@ -14,7 +14,7 @@ import logger from '../../config/logger.js';
  */
 export const getMyCharacters = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = 1;
 
     const characters = await Character.findAll({
       where: { joueurId: userId },
@@ -169,7 +169,7 @@ export const createCharacter = async (req, res) => {
       ]
     });
 
-    logger.info(`Personnage créé: ${character.nom} (${characterType.nom}) pour l'utilisateur ${userId}`);
+    logger.info(`Personnage créé: ${character.nom} (${characterType.name}) pour l'utilisateur ${userId}`);
 
     res.status(201).json({
       success: true,

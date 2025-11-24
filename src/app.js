@@ -2,9 +2,10 @@ import express from 'express';
 import config from './config/config.js';
 
 // Import des routes
-import userRoutes from './module/user/user.routes.js';
+
 import characterRoutes from './module/character/character.routes.js';
-import characterTypeRoutes from './module/characterType/characterType.routes.js';
+import userRoutes from './module/user/user.route.js';
+
 
 const app = express();
 
