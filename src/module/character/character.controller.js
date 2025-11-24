@@ -49,7 +49,7 @@ export const getMyCharacters = async (req, res) => {
 export const getCharacterById = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user?.id;
+    const userId = req.user?.id || 2;
 
     const character = await Character.findOne({
       where: { 
@@ -101,7 +101,7 @@ export const getCharacterById = async (req, res) => {
 export const createCharacter = async (req, res) => {
   try {
     const { nom, typeId } = req.body;
-    const userId = req.user?.id;
+    const userId = req.user?.id || 2;
 
     // Validation des données
     if (!nom || !typeId) {
@@ -209,7 +209,7 @@ export const gainExperience = async (req, res) => {
   try {
     const { id } = req.params;
     const { amount } = req.body;
-    const userId = req.user?.id;
+    const userId = req.user?.id || 2;
 
     if (!amount || amount <= 0) {
       return res.status(400).json({
@@ -273,7 +273,7 @@ export const allocateStatPoints = async (req, res) => {
   try {
     const { id } = req.params;
     const { hp, att, def } = req.body;
-    const userId = req.user?.id;
+    const userId = req.user?.id || 2;
 
     // Validation des données
     const statDistribution = { hp: hp || 0, att: att || 0, def: def || 0 };
@@ -365,7 +365,7 @@ export const updateCharacter = async (req, res) => {
   try {
     const { id } = req.params;
     const { nom, positionX, positionY } = req.body;
-    const userId = req.user?.id;
+    const userId = req.user?.id || 2;
 
     const character = await Character.findOne({
       where: { 
@@ -443,7 +443,7 @@ export const updateCharacter = async (req, res) => {
 export const deleteCharacter = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user?.id;
+    const userId = req.user?.id || 2;
 
     const character = await Character.findOne({
       where: { 
