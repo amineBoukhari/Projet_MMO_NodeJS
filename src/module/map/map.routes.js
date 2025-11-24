@@ -4,7 +4,8 @@ import {
 	getMaps,
 	getMapById,
 	getMapCases,
-	seedOneMapWithGrid
+	seedOneMapWithGrid,
+	seedRealisticMap
 } from './map.controller.js';
 
 const router = Router();
@@ -23,6 +24,9 @@ router.get('/maps/:id/cases', getMapCases);
 
 // Route pratique pour générer une map 10x10 et ses cases
 router.post('/maps/seed/demo', seedOneMapWithGrid);
+
+// Route pour générer une map réaliste 20x20 avec murs/obstacles
+router.post('/maps/seed/realistic', seedRealisticMap);
 
 export default router;
 

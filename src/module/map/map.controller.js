@@ -112,3 +112,55 @@ export const seedOneMapWithGrid = async (_req, res) => {
 	}
 };
 
+// Seed avancé : map "réaliste" avec murs/obstacles
+export const seedRealisticMap = async (_req, res) => {
+	try {
+		const width = 20;
+		const height = 20;
+
+		const map = await Map.create({
+			name: 'Starter Map 20x20',
+			width,
+			height,
+			description: 'Carte de départ avec murs et obstacles'
+		});
+
+		const casesToCreate = [];
+
+		for (let y = 0; y < height; y++) {
+			for (let x = 0; x < width; x++) {
+				let terrainType = 'plaine';
+				let blocked = false;
+
+				// Bordure de la map = murs bloquants
+				if (x === 0 || y === 0 || x === width - 1 || y === height - 1) {
+					terrainType = 'mur';
+					blocked = true;
+				} else if ((x % 5 === 0 && y % 2 === 0) || (x % 7 === 0 && y % 3 === 0)) {
+					// Quelques obstacles intérieurs (forêt/montagne)
+					terrainType = Math.random() < 0.5 ? 'forêt' : 'montagne';
+					blocked = true;
+				}
+
+				casesToCreate.push({
+					mapId: map.id,
+					x,
+					y,
+					terrainType,
+					blocked
+				});
+			}
+		}
+
+		await Case.bulkCreate(casesToCreate);
+
+		return res.status(201).json({
+			message: 'Starter Map 20x20 avec murs et obstacles générée',
+			mapId: map.id
+		});
+	} catch (error) {
+		console.error(error);
+		return res.status(500).json({ message: 'Erreur lors du seed de la map réaliste' });
+	}
+};
+

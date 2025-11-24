@@ -1,6 +1,7 @@
 import express from 'express';
 import config from './config/config.js';
 import mapRoutes from './module/map/map.routes.js';
+import caseRoutes from './module/case/case.routes.js';
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes Map & Cases
 app.use('/api', mapRoutes);
+app.use('/api', caseRoutes);
 
 // Test route
 app.get('/', (req, res) => {
