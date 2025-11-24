@@ -13,3 +13,4 @@
 2025-11-24 10:44:30 [error]: Erreur lors de la récupération des personnages: Unknown column 'type.nom' in 'field list'
 2025-11-24 11:39:47 [error]: Erreur lors du gain d'XP: WHERE parameter "joueurId" has invalid "undefined" value
 2025-11-24 11:42:51 [error]: Erreur lors de la répartition des points: WHERE parameter "joueurId" has invalid "undefined" value
+2025-11-24 12:14:03 [error]: port: 3002 is already in use.

@@ -1,9 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../../config/sequelize.js';
 
-/**
- * Modèle pour les personnages jouables
- */
+
 const Character = sequelize.define('Character', {
   id: {
     type: DataTypes.INTEGER,
@@ -166,6 +164,7 @@ const Character = sequelize.define('Character', {
  */
 Character.prototype.getXpForNextLevel = function() {
   // Formule simple: niveau * 100 XP pour passer au niveau suivant
+  // Par exemple, niveau 1 -> 100 XP, niveau 2 -> 200 XP ... 
   return this.niveau * 100;
 };
 
