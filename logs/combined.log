@@ -11,3 +11,15 @@
 2025-11-24 09:31:07 [debug]: Executing (default): ALTER TABLE `users` ADD `bio` TEXT;
 2025-11-24 09:31:08 [debug]: Executing (default): ALTER TABLE `users` ADD `dateInscription` DATETIME NOT NULL;
 2025-11-24 09:31:08 [error]: ❌ Unable to connect to the database: Incorrect datetime value: '0000-00-00 00:00:00' for column 'dateInscription' at row 1
+2025-11-24 09:38:35 [info]: 🚀 Server is starting...
+2025-11-24 09:38:35 [error]: ❌ Unable to connect to the database: Access denied for user 'pkrob'@'localhost' (using password: YES)
+2025-11-24 09:41:29 [info]: 🚀 Server is starting...
+2025-11-24 09:41:29 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 09:41:29 [info]: ✅ Database connection established successfully.
+2025-11-24 09:41:29 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 09:41:29 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER auto_increment , `username` VARCHAR(255) NOT NULL UNIQUE, `email` VARCHAR(255) NOT NULL UNIQUE, `passwordHash` VARCHAR(255) NOT NULL, `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player', `avatar` VARCHAR(255), `bio` TEXT, `dateInscription` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+2025-11-24 09:41:29 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 09:41:29 [info]: ✅ Database synchronized successfully.
+2025-11-24 09:41:29 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 09:41:29 [info]: Aucun utilisateur par défaut à créer
+2025-11-24 09:41:29 [info]: 🚀 Server is running on port 3002

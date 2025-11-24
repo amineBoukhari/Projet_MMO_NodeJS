@@ -1,15 +1,15 @@
 import winston from 'winston';
 import config from './config.js';
-// Définir les niveaux de logs
+// Define log levels
 const levels = {
-    error: 0, // Logs critiques
-    warn: 1,  // Avertissements
-    info: 2,  // Informations générales
-    http: 3,  // Logs des requêtes HTTP
-    debug: 4  // Logs détaillés (utilisés en développement)
+    error: 0, // Critical logs
+    warn: 1,  // Warnings
+    info: 2,  // General information
+    http: 3,  // HTTP request logs
+    debug: 4  // Detailed logs (used in development)
 };
 
-// Ajout des couleurs pour améliorer la lisibilité dans la console
+// Add colors to improve readability in the console
 winston.addColors({
     error: 'red',
     warn: 'yellow',
@@ -18,44 +18,44 @@ winston.addColors({
     debug: 'white'
 });
 
-// Définir le niveau de log en fonction de l'environnement
+// Define log level based on environment
 const logLevel = config.NODE_ENV === 'development' ? 'debug' : 'warn';
 
-// Créer une instance Winston
+// Create a Winston instance
 const logger = winston.createLogger({
     level: logLevel,
     levels,
     format: winston.format.combine(
-        // Ajout d'un timestamp pour chaque log
+        // Add a timestamp for each log
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-        // Définition d'un format de log personnalisé
+        // Define a custom log format
         winston.format.printf(
             (info) => `${info.timestamp} [${info.level}]: ${info.message}`
         )
     ),
     transports: [
-        // Fichier pour les erreurs critiques
+        // File for critical errors
         new winston.transports.File({
             level: 'error',
             filename: 'logs/error.log',
-            maxsize: 10000000, // 10 Mo
-            maxFiles: 10       // Conserver les 10 derniers fichiers
+            maxsize: 10000000, // 10 MB
+            maxFiles: 10       // Keep the last 10 files
         }),
-        // Fichier pour tous les logs combinés
+        // File for all combined logs
         new winston.transports.File({
             filename: 'logs/combined.log',
-            maxsize: 10000000, // 10 Mo
-            maxFiles: 10       // Conserver les 10 derniers fichiers
+            maxsize: 10000000, // 10 MB
+            maxFiles: 10       // Keep the last 10 files
         })
     ]
 });
 
-// Ajouter un transport Console si en développement
+// Add a Console transport if in development
 if (config.NODE_ENV === 'development') {
     logger.add(
         new winston.transports.Console({
             format: winston.format.combine(
-                winston.format.colorize({ all: true }), // Couleurs pour les logs
+                winston.format.colorize({ all: true }), // Colors for logs
                 winston.format.printf(
                     (info) => `${info.timestamp} [${info.level}]: ${info.message}`
                 )

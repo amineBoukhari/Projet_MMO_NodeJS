@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 import config from './config.js';
 import logger from './logger.js';
 
-// Créer l'instance Sequelize
+// Create Sequelize instance
 const sequelize = new Sequelize(config.DATABASE_URI, {
   dialect: config.DATABASE_DIALECT,
   logging: (msg) => logger.debug(msg),
@@ -14,7 +14,7 @@ const sequelize = new Sequelize(config.DATABASE_URI, {
   }
 });
 
-// Fonction de connexion à la base de données
+// Function to connect to the database
 const sequelizeConnect = async () => {
   try {
     await sequelize.authenticate();
@@ -25,11 +25,11 @@ const sequelizeConnect = async () => {
   }
 };
 
-// Fonction pour synchroniser les modèles avec la base de données
+// Function to synchronize models with the database
 const syncDatabase = async (options = {}) => {
   try {
-    // force: true => DROP les tables existantes
-    // alter: true => modifie les tables pour correspondre aux modèles
+    // force: true => DROP existing tables
+    // alter: true => modify tables to match models
     await sequelize.sync(options);
     logger.info('🔄 Database synchronized!');
   } catch (error) {
