@@ -4,9 +4,7 @@ import {
     getSpellById,
     createSpell,
     updateSpell,
-    deleteSpell,
-    attack,
-    endFight
+    deleteSpell
 } from './spell.controller.js'
 import { authMiddleware, adminMiddleware } from '../../middleware/auth.middleware.js';
 
@@ -18,7 +16,5 @@ router.get('/:id', getSpellById);
 router.post('/', createSpell);
 router.put('/:id', updateSpell);
 router.delete('/:id', deleteSpell);
-router.post('/fight/end/:attack/:spell/:defense', attack);
-router.get('/fight/end/:attack/:defense', endFight);
 
 export default router;
