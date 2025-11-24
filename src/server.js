@@ -1,7 +1,7 @@
 import http from 'http';
 import app from './app.js'; // Application Express
 import sequelize from './config/sequelize.js'; // Connexion Sequelize
-import models from './models/index.js'; // Import des modèles et associations
+import './models/associate.js'; // Import des associations
 import logger from './config/logger.js'; // Logger Winston
 import config from './config/config.js'; // Configuration (PORT, etc.)
 import initialData from './config/initialData.js'; // Fonction pour initialiser les données
