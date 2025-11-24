@@ -22,4 +22,8 @@ const Spell = sequelize.define('Spell',{
     tableName: 'spells'
 })
 
+export function attack(attack, defense) {
+    
+}
+
 export default Spell;
