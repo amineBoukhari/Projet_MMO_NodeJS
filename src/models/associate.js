@@ -2,22 +2,36 @@ import sequelize from '../config/sequelize.js';
 import CharacterType from '../module/characterType/characterType.model.js';
 import Spell from '../module/spell/spell.model.js';
 import User from '../module/user/user.model.js';
+import RefreshToken from '../module/auth/refreshToken.model.js';
 
-// Importer ici tous vos autres modèles quand vous les créerez
+// Import other models here when you create them
 // import Character from '../module/character/character.model.js';
 // import Item from '../module/item/item.model.js';
 // etc...
 
-// Définir les associations ici
+// Define all models
 const models = {
   User,
   CharacterType,
+  RefreshToken,
   Spell
   // Character,
   // Item,
 };
 
-// Exemple d'associations (à décommenter quand vous aurez d'autres modèles)
+// Define associations here
+// User has many refresh tokens
+User.hasMany(RefreshToken, { 
+  as: 'refreshTokens',
+  foreignKey: 'userId'
+});
+
+RefreshToken.belongsTo(User, {
+  as: 'user',
+  foreignKey: 'userId'
+});
+
+// Example associations (uncomment when you have other models)
 // User.hasMany(Character, { 
 //   as: 'characters',
 //   foreignKey: 'userId'
