@@ -129,12 +129,6 @@ const Character = sequelize.define('Character', {
     onDelete: 'RESTRICT',
     onUpdate: 'CASCADE'
   },
-  // Inventaire (JSON pour simplicité)
-  inventaire: {
-    type: DataTypes.JSON,
-    allowNull: true,
-    defaultValue: []
-  }
 }, {
   tableName: 'characters',
   timestamps: true,
