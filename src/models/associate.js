@@ -1,5 +1,6 @@
 import sequelize from '../config/sequelize.js';
 import CharacterType from '../module/characterType/characterType.model.js';
+import Spell from '../module/spell/spell.model.js';
 import User from '../module/user/user.model.js';
 
 // Importer ici tous vos autres modèles quand vous les créerez
@@ -10,7 +11,8 @@ import User from '../module/user/user.model.js';
 // Définir les associations ici
 const models = {
   User,
-  CharacterType
+  CharacterType,
+  Spell
   // Character,
   // Item,
 };
