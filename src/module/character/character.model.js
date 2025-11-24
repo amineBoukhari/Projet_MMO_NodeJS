@@ -250,9 +250,4 @@ Character.prototype.allocateStatPoints = function(statDistribution) {
   return this;
 };
  
-function isKo() {
-  return this.Character.hp = 0;
-}
-
-
 export default Character;
