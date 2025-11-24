@@ -71,3 +71,861 @@
 2025-11-24 10:03:04 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
 2025-11-24 10:03:04 [info]: Aucun utilisateur par défaut à créer
 2025-11-24 10:03:04 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:31:52 [info]: 🚀 Server is starting...
+2025-11-24 10:31:52 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:31:52 [info]: ✅ Database connection established successfully.
+2025-11-24 10:31:52 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:31:52 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:31:52 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:31:52 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:31:52 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:31:52 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:31:52 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `character_types` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) UNIQUE, `description` VARCHAR(255), `bonusHP` INTEGER, `bonusATT` INTEGER, `bonusDEF` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+2025-11-24 10:31:52 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:31:52 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:31:52 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:31:52 [info]: ℹ️ Users already exist, skipping initialization
+2025-11-24 10:31:52 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:32:24 [debug]: Executing (default): INSERT INTO `users` (`id`,`username`,`email`,`passwordHash`,`role`,`dateInscription`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 10:32:34 [debug]: Executing (default): INSERT INTO `users` (`id`,`username`,`email`,`passwordHash`,`role`,`dateInscription`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 10:32:51 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`email` = 'diara@test.com';
+2025-11-24 10:33:17 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`id` = 5;
+2025-11-24 10:40:54 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`email` = 'diara@test.com';
+2025-11-24 10:43:00 [info]: 🚀 Server is starting...
+2025-11-24 10:43:00 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:43:00 [info]: ✅ Database connection established successfully.
+2025-11-24 10:43:00 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:43:00 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:43:00 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:43:00 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:43:00 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:43:00 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:43:00 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `refresh_tokens` (`id` INTEGER auto_increment , `token` VARCHAR(500) NOT NULL UNIQUE, `userId` INTEGER NOT NULL, `expiresAt` DATETIME NOT NULL, `isRevoked` TINYINT(1) DEFAULT false, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 10:43:00 [error]: ❌ Unable to connect to the database: REFERENCES command denied to user 'pkrob'@'localhost' for table 'users'
+2025-11-24 10:44:23 [info]: 🚀 Server is starting...
+2025-11-24 10:44:23 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:44:23 [info]: ✅ Database connection established successfully.
+2025-11-24 10:44:23 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:44:23 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:44:23 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:44:23 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:44:23 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:44:23 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `refresh_tokens` (`id` INTEGER auto_increment , `token` VARCHAR(500) NOT NULL UNIQUE, `userId` INTEGER NOT NULL, `expiresAt` DATETIME NOT NULL, `isRevoked` TINYINT(1) DEFAULT false, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 10:44:23 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 10:44:23 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:44:23 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:44:23 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:44:23 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:44:23 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:44:23 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:44:23 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:44:23 [info]: ℹ️ Users already exist, skipping initialization
+2025-11-24 10:44:23 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:44:48 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`email` = 'diara@test.com';
+2025-11-24 10:44:48 [debug]: Executing (default): INSERT INTO `refresh_tokens` (`id`,`token`,`userId`,`expiresAt`,`isRevoked`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 10:50:31 [debug]: Executing (default): INSERT INTO `users` (`id`,`username`,`email`,`passwordHash`,`role`,`dateInscription`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 10:50:38 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`email` = 'diara@test.com';
+2025-11-24 10:50:38 [debug]: Executing (default): INSERT INTO `refresh_tokens` (`id`,`token`,`userId`,`expiresAt`,`isRevoked`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 10:51:47 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`id` = 5;
+2025-11-24 10:52:28 [debug]: Executing (default): SELECT `RefreshToken`.`id`, `RefreshToken`.`token`, `RefreshToken`.`userId`, `RefreshToken`.`expiresAt`, `RefreshToken`.`isRevoked`, `RefreshToken`.`createdAt`, `RefreshToken`.`updatedAt`, `user`.`id` AS `user.id`, `user`.`username` AS `user.username`, `user`.`email` AS `user.email`, `user`.`passwordHash` AS `user.passwordHash`, `user`.`role` AS `user.role`, `user`.`avatar` AS `user.avatar`, `user`.`bio` AS `user.bio`, `user`.`dateInscription` AS `user.dateInscription`, `user`.`updatedAt` AS `user.updatedAt` FROM `refresh_tokens` AS `RefreshToken` LEFT OUTER JOIN `users` AS `user` ON `RefreshToken`.`userId` = `user`.`id` WHERE `RefreshToken`.`token` = '40187687211ddb32b5340dac259c2805b2aec53dba06daf36fc2022a656f87c3a0809c8c40312f782769db546618f1bd92e214895799ebfbe193a48a2d94ddfb';
+2025-11-24 10:52:35 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`id` = 5;
+2025-11-24 10:52:36 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`id` = 5;
+2025-11-24 10:52:41 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`id` = 5;
+2025-11-24 10:53:59 [debug]: Executing (default): SELECT `id`, `username`, `email`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User`;
+2025-11-24 10:54:04 [debug]: Executing (default): SELECT `id`, `username`, `email`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User`;
+2025-11-24 10:54:13 [info]: 🚀 Server is starting...
+2025-11-24 10:54:13 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:54:13 [info]: ✅ Database connection established successfully.
+2025-11-24 10:54:13 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:54:13 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:54:13 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:54:13 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:54:13 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:54:14 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:54:14 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 10:54:14 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 10:54:14 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 10:54:14 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:54:14 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:54:14 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:54:14 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:54:14 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:54:14 [info]: ℹ️ Users already exist, skipping initialization
+2025-11-24 10:54:14 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:54:16 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`id` = 5;
+2025-11-24 10:54:30 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`email` = 'admin@test.com';
+2025-11-24 10:54:42 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`email` = 'admin@example.com';
+2025-11-24 10:54:48 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`email` = 'admin@example.com';
+2025-11-24 10:54:48 [debug]: Executing (default): INSERT INTO `refresh_tokens` (`id`,`token`,`userId`,`expiresAt`,`isRevoked`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 10:54:59 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`id` = 1;
+2025-11-24 10:54:59 [debug]: Executing (default): SELECT `id`, `username`, `email`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User`;
+2025-11-24 11:17:59 [info]: 🚀 Server is starting...
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:17:59 [info]: ✅ Database connection established successfully.
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:17:59 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:17:59 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:17:59 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:17:59 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:17:59 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `characters` (`id` INTEGER auto_increment , `nom` VARCHAR(50) NOT NULL, `joueurId` INTEGER NOT NULL, `typeId` INTEGER NOT NULL, `hp` INTEGER NOT NULL DEFAULT 100, `hpMax` INTEGER NOT NULL DEFAULT 100, `att` INTEGER NOT NULL DEFAULT 10, `def` INTEGER NOT NULL DEFAULT 5, `xp` INTEGER NOT NULL DEFAULT 0, `niveau` INTEGER NOT NULL DEFAULT 1, `pointsDisponibles` INTEGER NOT NULL DEFAULT 0, `positionX` INTEGER NOT NULL DEFAULT 0, `positionY` INTEGER NOT NULL DEFAULT 0, `inventaire` JSON, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 11:17:59 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_joueur_id` (`joueurId`)
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_type_id` (`typeId`)
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_niveau` (`niveau`)
+2025-11-24 11:17:59 [debug]: Executing (default): ALTER TABLE `characters` ADD UNIQUE INDEX `characters_joueur_id_nom` (`joueurId`, `nom`)
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:17:59 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `maps` (`id` INTEGER auto_increment , `name` VARCHAR(100) NOT NULL, `width` INTEGER NOT NULL, `height` INTEGER NOT NULL, `description` TEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+2025-11-24 11:17:59 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:17:59 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:17:59 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `cases` (`id` INTEGER auto_increment , `map_id` INTEGER NOT NULL, `x` INTEGER NOT NULL, `y` INTEGER NOT NULL, `terrain_type` VARCHAR(50) NOT NULL, `blocked` TINYINT(1) NOT NULL DEFAULT false, `options` JSON, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 11:17:59 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:00 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:00 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:18:00 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:18:00 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:18:00 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:18:00 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:18:00 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:00 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:00 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `spells` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) UNIQUE, `description` VARCHAR(255), `power` INTEGER, `type` VARCHAR(255), `minLevel` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+2025-11-24 11:18:00 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:18:00 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:18:00 [info]: 🔄 Starting database initialization...
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:18:00 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:18:00 [debug]: Executing (default): INSERT INTO `character_types` (`id`,`name`,`description`,`bonusHP`,`bonusATT`,`bonusDEF`,`createdAt`,`updatedAt`) VALUES (NULL,'Guerrier','Strong melee fighter with high defense',50,8,6,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,'Mage','Powerful spellcaster with low defense',10,18,2,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,'Archer','Agile ranged attacker',20,12,3,'2025-11-24 10:18:00','2025-11-24 10:18:00');
+2025-11-24 11:18:00 [info]: ✅ Default character types created
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Guerrier';
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Mage';
+2025-11-24 11:18:00 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 11:18:00 [info]: ✅ Starter character Thorgal (Warrior) created
+2025-11-24 11:18:00 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 11:18:00 [info]: ✅ Starter character Elyra (Mage) created
+2025-11-24 11:18:00 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:18:00 [debug]: Executing (default): INSERT INTO `maps` (`id`,`name`,`width`,`height`,`description`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 11:18:00 [debug]: Executing (default): INSERT INTO `cases` (`id`,`map_id`,`x`,`y`,`terrain_type`,`blocked`,`createdAt`,`updatedAt`) VALUES (NULL,1,0,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,0,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,1,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,2,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,3,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,4,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,5,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,6,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,7,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,8,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,0,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,1,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,2,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,3,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,4,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,5,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,6,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,7,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,8,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00'),(NULL,1,9,9,'plain',false,'2025-11-24 10:18:00','2025-11-24 10:18:00');
+2025-11-24 11:18:00 [info]: ✅ Map "Starter Zone" created with 100 cases
+2025-11-24 11:18:07 [info]: 🚀 Server is starting...
+2025-11-24 11:18:07 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:18:07 [info]: ✅ Database connection established successfully.
+2025-11-24 11:18:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:18:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:18:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:18:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:18:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:18:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:18:07 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:18:08 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:08 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:18:08 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:18:08 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:08 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:18:08 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:18:08 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:09 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:18:09 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:18:09 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:18:09 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:18:09 [info]: 🔄 Starting database initialization...
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:18:09 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:18:09 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:18:09 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 11:18:09 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:18:09 [info]: ℹ️ Maps already exist, skipping map seeding
+2025-11-24 11:18:09 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:18:09 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:25:01 [info]: 🚀 Server is starting...
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:25:01 [info]: ✅ Database connection established successfully.
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:01 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `characters` (`id` INTEGER auto_increment , `nom` VARCHAR(50) NOT NULL, `joueurId` INTEGER NOT NULL, `typeId` INTEGER NOT NULL, `hp` INTEGER NOT NULL DEFAULT 100, `hpMax` INTEGER NOT NULL DEFAULT 100, `att` INTEGER NOT NULL DEFAULT 10, `def` INTEGER NOT NULL DEFAULT 5, `xp` INTEGER NOT NULL DEFAULT 0, `niveau` INTEGER NOT NULL DEFAULT 1, `pointsDisponibles` INTEGER NOT NULL DEFAULT 0, `positionX` INTEGER NOT NULL DEFAULT 0, `positionY` INTEGER NOT NULL DEFAULT 0, `inventaire` JSON, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_joueur_id` (`joueurId`)
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_type_id` (`typeId`)
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_niveau` (`niveau`)
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `characters` ADD UNIQUE INDEX `characters_joueur_id_nom` (`joueurId`, `nom`)
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:01 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `maps` (`id` INTEGER auto_increment , `name` VARCHAR(100) NOT NULL, `width` INTEGER NOT NULL, `height` INTEGER NOT NULL, `description` TEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:01 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `cases` (`id` INTEGER auto_increment , `map_id` INTEGER NOT NULL, `x` INTEGER NOT NULL, `y` INTEGER NOT NULL, `terrain_type` VARCHAR(50) NOT NULL, `blocked` TINYINT(1) NOT NULL DEFAULT false, `options` JSON, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:01 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `refresh_tokens` (`id` INTEGER auto_increment , `token` VARCHAR(500) NOT NULL UNIQUE, `userId` INTEGER NOT NULL, `expiresAt` DATETIME NOT NULL, `isRevoked` TINYINT(1) DEFAULT false, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 11:25:01 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:25:01 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:25:01 [info]: 🔄 Starting database initialization...
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:25:01 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:25:01 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Guerrier';
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Mage';
+2025-11-24 11:25:01 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 11:25:01 [info]: ✅ Starter character Thorgal (Warrior) created
+2025-11-24 11:25:01 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 11:25:01 [info]: ✅ Starter character Elyra (Mage) created
+2025-11-24 11:25:01 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:25:01 [debug]: Executing (default): INSERT INTO `maps` (`id`,`name`,`width`,`height`,`description`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 11:25:01 [debug]: Executing (default): INSERT INTO `cases` (`id`,`map_id`,`x`,`y`,`terrain_type`,`blocked`,`createdAt`,`updatedAt`) VALUES (NULL,1,0,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,0,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,1,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,2,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,3,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,4,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,5,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,6,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,7,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,8,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,0,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,1,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,2,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,3,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,4,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,5,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,6,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,7,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,8,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01'),(NULL,1,9,9,'plain',false,'2025-11-24 10:25:01','2025-11-24 10:25:01');
+2025-11-24 11:25:01 [info]: ✅ Map "Starter Zone" created with 100 cases
+2025-11-24 11:25:01 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:25:01 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:25:27 [info]: 🚀 Server is starting...
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:25:27 [info]: ✅ Database connection established successfully.
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:25:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_1' AND TABLE_SCHEMA = 'MMORPG';
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_1`;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:25:27 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_2' AND TABLE_SCHEMA = 'MMORPG';
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_2`;
+2025-11-24 11:25:27 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:25:27 [error]: ❌ Unable to connect to the database: Cannot add or update a child row: a foreign key constraint fails (`mmorpg`.`#sql-c949_1bd`, CONSTRAINT `characters_ibfk_4` FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE)
+2025-11-24 11:26:02 [info]: 🚀 Server is starting...
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:26:02 [info]: ✅ Database connection established successfully.
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_3' AND TABLE_SCHEMA = 'MMORPG';
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_3`;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='cases' AND constraint_name = 'cases_ibfk_1' AND TABLE_SCHEMA = 'MMORPG';
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` DROP FOREIGN KEY `cases_ibfk_1`;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='refresh_tokens' AND constraint_name = 'refresh_tokens_ibfk_1' AND TABLE_SCHEMA = 'MMORPG';
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` DROP FOREIGN KEY `refresh_tokens_ibfk_1`;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:26:02 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:26:02 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:26:02 [info]: 🔄 Starting database initialization...
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `users` (`id`,`username`,`email`,`passwordHash`,`role`,`bio`,`dateInscription`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `users` (`id`,`username`,`email`,`passwordHash`,`role`,`bio`,`dateInscription`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+2025-11-24 11:26:02 [info]: ✅ Default users created successfully
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:26:02 [info]: ✅ Default spells created successfully
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `character_types` (`id`,`name`,`description`,`bonusHP`,`bonusATT`,`bonusDEF`,`createdAt`,`updatedAt`) VALUES (NULL,'Guerrier','Strong melee fighter with high defense',50,8,6,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,'Mage','Powerful spellcaster with low defense',10,18,2,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,'Archer','Agile ranged attacker',20,12,3,'2025-11-24 10:26:02','2025-11-24 10:26:02');
+2025-11-24 11:26:02 [info]: ✅ Default character types created
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 4;
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Guerrier';
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Mage';
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 11:26:02 [info]: ✅ Starter character Thorgal (Warrior) created
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 11:26:02 [info]: ✅ Starter character Elyra (Mage) created
+2025-11-24 11:26:02 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `maps` (`id`,`name`,`width`,`height`,`description`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?);
+2025-11-24 11:26:02 [debug]: Executing (default): INSERT INTO `cases` (`id`,`map_id`,`x`,`y`,`terrain_type`,`blocked`,`createdAt`,`updatedAt`) VALUES (NULL,2,0,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,0,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,1,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,2,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,3,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,4,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,5,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,6,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,7,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,8,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,0,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,1,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,2,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,3,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,4,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,5,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,6,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,7,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,8,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02'),(NULL,2,9,9,'plain',false,'2025-11-24 10:26:02','2025-11-24 10:26:02');
+2025-11-24 11:26:02 [info]: ✅ Map "Starter Zone" created with 100 cases
+2025-11-24 11:26:02 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:26:02 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:35:16 [info]: 🚀 Server is starting...
+2025-11-24 11:35:16 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:35:16 [info]: ✅ Database connection established successfully.
+2025-11-24 11:35:16 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:35:16 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:35:16 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:35:16 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:35:16 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:35:16 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:35:16 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:35:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:35:17 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:35:17 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:35:17 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:35:17 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:35:17 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:35:17 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:35:17 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:35:17 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:35:17 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:35:17 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:35:18 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:35:18 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:35:18 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:35:18 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:35:18 [info]: 🔄 Starting database initialization...
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:35:18 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:35:18 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:35:18 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:35:18 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:35:18 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:35:18 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:35:18 [debug]: Executing (default): INSERT INTO `spells` (`id`,`name`,`description`,`type`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+2025-11-24 11:35:18 [info]: ✅ Default spells created successfully
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:35:18 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:35:18 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 11:35:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:35:18 [info]: ℹ️ Maps already exist, skipping map seeding
+2025-11-24 11:35:18 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:35:18 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:36:04 [info]: 🚀 Server is starting...
+2025-11-24 11:36:04 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:36:04 [info]: ✅ Database connection established successfully.
+2025-11-24 11:36:04 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:36:04 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:36:04 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:36:04 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:36:04 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:36:04 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:36:04 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:36:04 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:36:04 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:36:04 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:36:05 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:36:05 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:05 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:36:06 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:36:06 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:36:06 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:36:06 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:06 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:06 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:36:06 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:36:06 [info]: 🔄 Starting database initialization...
+2025-11-24 11:36:06 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:36:06 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:36:06 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:36:06 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:36:06 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:36:06 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:36:06 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:36:06 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 11:36:06 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:36:06 [info]: ℹ️ Maps already exist, skipping map seeding
+2025-11-24 11:36:06 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:36:06 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:40:35 [info]: 🚀 Server is starting...
+2025-11-24 11:40:35 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:40:35 [info]: ✅ Database connection established successfully.
+2025-11-24 11:40:35 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:40:35 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:40:35 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:40:35 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:40:35 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:40:35 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:40:35 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:40:35 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:40:35 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:40:35 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:40:36 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:40:36 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:40:36 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:40:36 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:40:36 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:40:36 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:40:36 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:40:36 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:40:36 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:40:36 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:37 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'MMORPG'
+2025-11-24 11:40:37 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='MMORPG' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:37 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:37 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:40:37 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:40:37 [info]: 🔄 Starting database initialization...
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:40:37 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:40:37 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:40:37 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 11:40:37 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:40:37 [info]: ℹ️ Maps already exist, skipping map seeding
+2025-11-24 11:40:37 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:40:37 [info]: 🚀 Server is running on port 3002

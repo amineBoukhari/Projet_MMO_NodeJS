@@ -1,6 +1,14 @@
 import express from 'express';
 import config from './config/config.js';
+import passport from './config/passport.js';
+import swagger from './config/swagger.js';
+import characterRoutes from './module/character/character.routes.js';
+import mapRoutes from './module/map/map.routes.js';
+import caseRoutes from './module/case/case.routes.js';
 import userRoutes from './module/user/user.route.js';
+import characterTypeRoutes from './module/characterType/characterType.route.js';
+import spellRoutes from './module/spell/spell.route.js';
+import authRoutes from './module/auth/auth.route.js';
 
 const app = express();
 
@@ -8,15 +16,38 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Swagger UI
+if (config.NODE_ENV === 'development') {
+    app.use('/doc', swagger.serve, swagger.setup);
+}
+
+// Initialize Passport
+app.use(passport.initialize());
+
 // Test route
 app.get('/', (req, res) => {
   res.json({ 
-    message: '✅ Server is running!',
-    env: config.NODE_ENV
+    message: '✅ MMORPG API Server is running!',
+    env: config.NODE_ENV,
+  });
+});
+
+// Health check route
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    message: '✅ API is healthy'
   });
 });
 
 // API Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/maps', mapRoutes);
+app.use('/api/cases', caseRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/personnages', characterRoutes);
+app.use('/api/characterTypes', characterTypeRoutes)
+app.use('/api/spells', spellRoutes)
 
 export default app;

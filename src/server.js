@@ -4,14 +4,14 @@ import sequelize from './config/sequelize.js'; // Connexion Sequelize
 import './models/associate.js'; // Import des associations
 import logger from './config/logger.js'; // Logger Winston
 import config from './config/config.js'; // Configuration (PORT, etc.)
-import initialData from './config/initialData.js'; // Fonction pour initialiser les données
+import initialData from './config/initialData.js'; // Function to create default data
 
 logger.info("🚀 Server is starting...");
 
-// Créer le serveur HTTP
+// Create HTTP server
 const server = http.createServer(app);
 
-// Normaliser le port
+// Normalize port
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
   if (isNaN(port)) {
@@ -26,7 +26,7 @@ const normalizePort = (val) => {
 const port = normalizePort(config.PORT || '3000');
 app.set('port', port);
 
-// Gestionnaire d'erreurs du serveur
+// Server error handler
 const errorHandler = (error) => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -45,7 +45,7 @@ const errorHandler = (error) => {
   }
 };
 
-// Gestion des événements du serveur
+// Server event handling
 server.on('error', errorHandler);
 server.on('listening', () => {
   const address = server.address();
@@ -53,22 +53,22 @@ server.on('listening', () => {
   logger.info(`🚀 Server is running on ${bind}`);
 });
 
-// Synchronisation de la base de données et démarrage du serveur
+// Database synchronization and server startup
 (async () => {
   try {
     await sequelize.authenticate();
     logger.info('✅ Database connection established successfully.');
     
-    // Synchroniser les modèles avec la base de données
-    // force: false => ne supprime pas les tables existantes
-    // alter: true => modifie les tables pour correspondre aux modèles
+    // Synchronize models with the database
+    // force: false => do not drop existing tables
+    // alter: true => modify tables to match models
     await sequelize.sync({ alter: true });
     logger.info('✅ Database synchronized successfully.');
     
-    // Initialiser les données par défaut
+    // Initialize default data
     await initialData();
     
-    // Démarrer le serveur
+    // Start the server
     server.listen(port);
   } catch (error) {
     logger.error('❌ Unable to connect to the database:', error);

@@ -18,4 +18,4 @@ router.delete('/:id', deleteSpell);
 router.post('/fight/end/:attack/:spell/:defense', attack);
 router.get('/fight/end/:attack/:defense', endFight);
 
-module.exports = router;
+export default router;

@@ -1,65 +1,70 @@
 import Character from "../character/character.model.js";
 import Spell from "./spell.model.js";
 
-exports.getAll = async (req, res) => {
+export const getAllSpells = async (req, res) => {
     try {
-        let roleList = await Role.findAll();
-        res.status(200).json(roleList);
+        let spellList = await Spell.findAll();
+        res.status(200).json(spellList);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.getById = async (req, res) => {
+export const getSpellById = async (req, res) => {
     try {
-        let role = await Role.findOne({
+        let spell = await Spell.findOne({
             where: {
                 id: req.params.id
             },
-            include: [User]
         });
-        res.status(200).json(role);
+        res.status(200).json(spell);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.create = async (req, res) => {
+export const createSpell = async (req, res) => {
     try {
-        let role = await Role.create({
-            title: req.body.title,
-            code: req.body.code
+        let spell = await Spell.create({
+            name: req.body.name,
+            description: req.body.description,
+            power: req.body.power,
+            type: req.body.type,
+            minLevel: req.body.minLevel
         });
-        res.status(201).json(role);
+        res.status(201).json(spell);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.update = async (req, res) => {
+export const updateSpell = async (req, res) => {
     try {
-        let role = await Role.create({
-            title: req.body.title,
-            code: req.body.code
+        let spell = await Spell.update({
+            name: req.body.name,
+            description: req.body.description,
+            power: req.body.power,
+            type: req.body.type,
+            minLevel: req.body.minLevel
         }, {
             where: {
                 id: req.params.id
             }
         });
-        res.status(201).json(role);
+        res.status(201).json(spell);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.delete =  async (req, res) => {
+export const deleteSpell =  async (req, res) => {
     try {
-        let role = await Role.destroy({
+        let spell = await Spell.destroy({
             where: {
                 id: req.params.id
             }
         });
-        res.status(200).json(role);
+        res.status(200).json(spell);
     } catch (e) {
         res.status(400).json(e.message);
     }

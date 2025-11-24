@@ -1,0 +1,966 @@
+2025-11-24 10:26:02 [info]: 🚀 Server is starting...
+2025-11-24 10:26:02 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:26:02 [info]: ✅ Database connection established successfully.
+2025-11-24 10:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:26:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:26:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:26:02 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:26:02 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `character_types` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) UNIQUE, `description` VARCHAR(255), `bonusHP` INTEGER, `bonusATT` INTEGER, `bonusDEF` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+2025-11-24 10:26:02 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:26:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:26:02 [debug]: Executing (default): CREATE TABLE IF NOT EXISTS `characters` (`id` INTEGER auto_increment , `nom` VARCHAR(50) NOT NULL, `joueurId` INTEGER NOT NULL, `typeId` INTEGER NOT NULL, `hp` INTEGER NOT NULL DEFAULT 100, `hpMax` INTEGER NOT NULL DEFAULT 100, `att` INTEGER NOT NULL DEFAULT 10, `def` INTEGER NOT NULL DEFAULT 5, `xp` INTEGER NOT NULL DEFAULT 0, `niveau` INTEGER NOT NULL DEFAULT 1, `pointsDisponibles` INTEGER NOT NULL DEFAULT 0, `positionX` INTEGER NOT NULL DEFAULT 0, `positionY` INTEGER NOT NULL DEFAULT 0, `inventaire` JSON, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+2025-11-24 10:26:02 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_joueur_id` (`joueurId`)
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_type_id` (`typeId`)
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `characters` ADD INDEX `characters_niveau` (`niveau`)
+2025-11-24 10:26:02 [debug]: Executing (default): ALTER TABLE `characters` ADD UNIQUE INDEX `characters_joueur_id_nom` (`joueurId`, `nom`)
+2025-11-24 10:26:02 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:26:02 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:26:02 [debug]: Executing (default): INSERT INTO `users` (`id`,`username`,`email`,`passwordHash`,`role`,`bio`,`dateInscription`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+2025-11-24 10:26:03 [debug]: Executing (default): INSERT INTO `users` (`id`,`username`,`email`,`passwordHash`,`role`,`bio`,`dateInscription`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+2025-11-24 10:26:03 [info]: ✅ Default users created successfully
+2025-11-24 10:26:03 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:31:27 [info]: 🚀 Server is starting...
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:31:27 [info]: ✅ Database connection established successfully.
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:31:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:31:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:31:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_1' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_1`;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_2' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_2`;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:31:27 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:31:27 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:31:27 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:31:27 [info]: ℹ️ Users already exist, skipping initialization
+2025-11-24 10:31:27 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:32:24 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:32:27 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:32:42 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:32:55 [info]: 🚀 Server is starting...
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:32:55 [info]: ✅ Database connection established successfully.
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:32:55 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:32:55 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:32:55 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_3' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_3`;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:32:55 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_4' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_4`;
+2025-11-24 10:32:55 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:32:56 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:32:56 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:32:56 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:32:56 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:32:56 [info]: ℹ️ Users already exist, skipping initialization
+2025-11-24 10:32:56 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:32:57 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:36:33 [info]: 🚀 Server is starting...
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:36:33 [info]: ✅ Database connection established successfully.
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:36:33 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:36:33 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:36:33 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_5' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_5`;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_6' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_6`;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:36:33 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:36:33 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:36:33 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:36:33 [debug]: Executing (default): INSERT INTO `character_types` (`id`,`description`,`bonusHP`,`createdAt`,`updatedAt`) VALUES (NULL,'Cogne fort et encaisse.',50,'2025-11-24 09:36:33','2025-11-24 09:36:33'),(NULL,'Puissance magique, fragile en mêlée.',10,'2025-11-24 09:36:33','2025-11-24 09:36:33'),(NULL,'Tire à distance, agile.',20,'2025-11-24 09:36:33','2025-11-24 09:36:33');
+2025-11-24 10:36:33 [info]: ✅ Default character types created
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:36:33 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`nom` = 'Guerrier' LIMIT 1;
+2025-11-24 10:36:33 [error]: ❌ Error initializing data: Unknown column 'CharacterType.nom' in 'where clause'
+2025-11-24 10:36:33 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:38:04 [info]: 🚀 Server is starting...
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:38:04 [info]: ✅ Database connection established successfully.
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:38:04 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:38:04 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:38:04 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_7' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_7`;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_8' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_8`;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:38:04 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:38:04 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:38:04 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:38:04 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Guerrier';
+2025-11-24 10:38:04 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Mage';
+2025-11-24 10:38:04 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:40:00 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:40:38 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:40:39 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:40:43 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:41:16 [info]: 🚀 Server is starting...
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:41:16 [info]: ✅ Database connection established successfully.
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:41:16 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:41:16 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:41:16 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_9' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_9`;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_10' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_10`;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:41:16 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:41:16 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:41:16 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:41:16 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Guerrier';
+2025-11-24 10:41:16 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE `CharacterType`.`name` = 'Mage';
+2025-11-24 10:41:16 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:41:18 [debug]: Executing (default): SELECT `Character`.`id`, `Character`.`nom`, `Character`.`joueurId`, `Character`.`typeId`, `Character`.`hp`, `Character`.`hpMax`, `Character`.`att`, `Character`.`def`, `Character`.`xp`, `Character`.`niveau`, `Character`.`pointsDisponibles`, `Character`.`positionX`, `Character`.`positionY`, `Character`.`inventaire`, `Character`.`createdAt`, `Character`.`updatedAt`, `type`.`id` AS `type.id`, `type`.`nom` AS `type.nom`, `type`.`description` AS `type.description` FROM `characters` AS `Character` LEFT OUTER JOIN `character_types` AS `type` ON `Character`.`typeId` = `type`.`id` WHERE `Character`.`joueurId` = 1 ORDER BY `Character`.`createdAt` DESC;
+2025-11-24 10:41:18 [error]: Erreur lors de la récupération des personnages: Unknown column 'type.nom' in 'field list'
+2025-11-24 10:42:26 [info]: 🚀 Server is starting...
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:42:26 [info]: ✅ Database connection established successfully.
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:42:26 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:42:26 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:42:26 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_11' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_11`;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_12' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_12`;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:42:26 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:42:26 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:42:26 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:42:26 [debug]: Executing (default): INSERT INTO `character_types` (`id`,`name`,`description`,`bonusHP`,`bonusATT`,`bonusDEF`,`createdAt`,`updatedAt`) VALUES (NULL,'Guerrier','Cogne fort et encaisse.',50,8,6,'2025-11-24 09:42:26','2025-11-24 09:42:26'),(NULL,'Mage','Puissance magique, fragile en mêlée.',10,18,2,'2025-11-24 09:42:26','2025-11-24 09:42:26'),(NULL,'Archer','Tire à distance, agile.',20,12,3,'2025-11-24 09:42:26','2025-11-24 09:42:26');
+2025-11-24 10:42:26 [info]: ✅ Default character types created (robust insert)
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:42:26 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType` WHERE (`CharacterType`.`name` = 'Guerrier' OR `CharacterType`.`nom` = 'Guerrier') LIMIT 1;
+2025-11-24 10:42:26 [error]: ❌ Error initializing data: Unknown column 'CharacterType.nom' in 'where clause'
+2025-11-24 10:42:26 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:43:54 [info]: 🚀 Server is starting...
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:43:54 [info]: ✅ Database connection established successfully.
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:43:54 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:43:54 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:43:54 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_13' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_13`;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_14' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_14`;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:43:54 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:43:54 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:43:54 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:43:54 [debug]: Executing (default): INSERT INTO `character_types` (`id`,`name`,`description`,`bonusHP`,`bonusATT`,`bonusDEF`,`createdAt`,`updatedAt`) VALUES (NULL,'Guerrier','Cogne fort et encaisse.',50,8,6,'2025-11-24 09:43:54','2025-11-24 09:43:54'),(NULL,'Mage','Puissance magique, fragile en mêlée.',10,18,2,'2025-11-24 09:43:54','2025-11-24 09:43:54'),(NULL,'Archer','Tire à distance, agile.',20,12,3,'2025-11-24 09:43:54','2025-11-24 09:43:54');
+2025-11-24 10:43:54 [info]: ✅ Default character types created
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:43:54 [debug]: Executing (default): SELECT `id`, `name`, `description`, `bonusHP`, `bonusATT`, `bonusDEF`, `createdAt`, `updatedAt` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:43:54 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 10:43:54 [info]: ✅ Starter character Thorgal created for player player1
+2025-11-24 10:43:54 [debug]: Executing (default): INSERT INTO `characters` (`id`,`nom`,`joueurId`,`typeId`,`hp`,`hpMax`,`att`,`def`,`xp`,`niveau`,`pointsDisponibles`,`positionX`,`positionY`,`inventaire`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+2025-11-24 10:43:55 [info]: ✅ Starter character Elyra created for player player1
+2025-11-24 10:43:55 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:44:08 [debug]: Executing (default): SELECT `Character`.`id`, `Character`.`nom`, `Character`.`joueurId`, `Character`.`typeId`, `Character`.`hp`, `Character`.`hpMax`, `Character`.`att`, `Character`.`def`, `Character`.`xp`, `Character`.`niveau`, `Character`.`pointsDisponibles`, `Character`.`positionX`, `Character`.`positionY`, `Character`.`inventaire`, `Character`.`createdAt`, `Character`.`updatedAt`, `type`.`id` AS `type.id`, `type`.`nom` AS `type.nom`, `type`.`description` AS `type.description` FROM `characters` AS `Character` LEFT OUTER JOIN `character_types` AS `type` ON `Character`.`typeId` = `type`.`id` WHERE `Character`.`joueurId` = 1 ORDER BY `Character`.`createdAt` DESC;
+2025-11-24 10:44:08 [error]: Erreur lors de la récupération des personnages: Unknown column 'type.nom' in 'field list'
+2025-11-24 10:44:27 [info]: 🚀 Server is starting...
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:44:27 [info]: ✅ Database connection established successfully.
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:44:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:44:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:44:27 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_15' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_15`;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_16' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_16`;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:44:27 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:44:27 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:44:27 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:44:27 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:44:27 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:44:27 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 10:44:27 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:44:30 [debug]: Executing (default): SELECT `Character`.`id`, `Character`.`nom`, `Character`.`joueurId`, `Character`.`typeId`, `Character`.`hp`, `Character`.`hpMax`, `Character`.`att`, `Character`.`def`, `Character`.`xp`, `Character`.`niveau`, `Character`.`pointsDisponibles`, `Character`.`positionX`, `Character`.`positionY`, `Character`.`inventaire`, `Character`.`createdAt`, `Character`.`updatedAt`, `type`.`id` AS `type.id`, `type`.`nom` AS `type.nom`, `type`.`description` AS `type.description` FROM `characters` AS `Character` LEFT OUTER JOIN `character_types` AS `type` ON `Character`.`typeId` = `type`.`id` WHERE `Character`.`joueurId` = 1 ORDER BY `Character`.`createdAt` DESC;
+2025-11-24 10:44:30 [error]: Erreur lors de la récupération des personnages: Unknown column 'type.nom' in 'field list'
+2025-11-24 10:47:57 [info]: 🚀 Server is starting...
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:47:57 [info]: ✅ Database connection established successfully.
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:47:57 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:47:57 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:47:57 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_17' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_17`;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_18' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_18`;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:47:57 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:47:57 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:47:57 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:47:57 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:47:57 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:47:57 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 10:47:57 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:48:00 [debug]: Executing (default): SELECT `Character`.`id`, `Character`.`nom`, `Character`.`joueurId`, `Character`.`typeId`, `Character`.`hp`, `Character`.`hpMax`, `Character`.`att`, `Character`.`def`, `Character`.`xp`, `Character`.`niveau`, `Character`.`pointsDisponibles`, `Character`.`positionX`, `Character`.`positionY`, `Character`.`inventaire`, `Character`.`createdAt`, `Character`.`updatedAt`, `type`.`id` AS `type.id`, `type`.`name` AS `type.name`, `type`.`description` AS `type.description` FROM `characters` AS `Character` LEFT OUTER JOIN `character_types` AS `type` ON `Character`.`typeId` = `type`.`id` WHERE `Character`.`joueurId` = 1 ORDER BY `Character`.`createdAt` DESC;
+2025-11-24 10:48:16 [debug]: Executing (default): SELECT `Character`.`id`, `Character`.`nom`, `Character`.`joueurId`, `Character`.`typeId`, `Character`.`hp`, `Character`.`hpMax`, `Character`.`att`, `Character`.`def`, `Character`.`xp`, `Character`.`niveau`, `Character`.`pointsDisponibles`, `Character`.`positionX`, `Character`.`positionY`, `Character`.`inventaire`, `Character`.`createdAt`, `Character`.`updatedAt`, `type`.`id` AS `type.id`, `type`.`name` AS `type.name`, `type`.`description` AS `type.description` FROM `characters` AS `Character` LEFT OUTER JOIN `character_types` AS `type` ON `Character`.`typeId` = `type`.`id` WHERE `Character`.`joueurId` = 1 ORDER BY `Character`.`createdAt` DESC;
+2025-11-24 10:48:17 [debug]: Executing (default): SELECT `Character`.`id`, `Character`.`nom`, `Character`.`joueurId`, `Character`.`typeId`, `Character`.`hp`, `Character`.`hpMax`, `Character`.`att`, `Character`.`def`, `Character`.`xp`, `Character`.`niveau`, `Character`.`pointsDisponibles`, `Character`.`positionX`, `Character`.`positionY`, `Character`.`inventaire`, `Character`.`createdAt`, `Character`.`updatedAt`, `type`.`id` AS `type.id`, `type`.`name` AS `type.name`, `type`.`description` AS `type.description` FROM `characters` AS `Character` LEFT OUTER JOIN `character_types` AS `type` ON `Character`.`typeId` = `type`.`id` WHERE `Character`.`joueurId` = 1 ORDER BY `Character`.`createdAt` DESC;
+2025-11-24 10:49:18 [info]: 🚀 Server is starting...
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 10:49:18 [info]: ✅ Database connection established successfully.
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:49:18 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:49:18 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 10:49:18 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_19' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_19`;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_20' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_20`;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 10:49:18 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 10:49:18 [info]: ✅ Database synchronized successfully.
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 10:49:18 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 10:49:18 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 10:49:18 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 10:49:18 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 10:49:18 [info]: 🚀 Server is running on port 3002
+2025-11-24 10:49:22 [debug]: Executing (default): SELECT `Character`.`id`, `Character`.`nom`, `Character`.`joueurId`, `Character`.`typeId`, `Character`.`hp`, `Character`.`hpMax`, `Character`.`att`, `Character`.`def`, `Character`.`xp`, `Character`.`niveau`, `Character`.`pointsDisponibles`, `Character`.`positionX`, `Character`.`positionY`, `Character`.`inventaire`, `Character`.`createdAt`, `Character`.`updatedAt`, `type`.`id` AS `type.id`, `type`.`name` AS `type.name`, `type`.`description` AS `type.description` FROM `characters` AS `Character` LEFT OUTER JOIN `character_types` AS `type` ON `Character`.`typeId` = `type`.`id` WHERE `Character`.`joueurId` = 2 ORDER BY `Character`.`createdAt` DESC;
+2025-11-24 11:36:57 [info]: 🚀 Server is starting...
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:36:57 [info]: ✅ Database connection established successfully.
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:36:57 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:36:57 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:36:57 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_35' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_35`;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:36:57 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_36' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_36`;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:36:57 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='cases' AND constraint_name = 'cases_ibfk_1' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` DROP FOREIGN KEY `cases_ibfk_1`;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='refresh_tokens' AND constraint_name = 'refresh_tokens_ibfk_1' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `refresh_tokens` DROP FOREIGN KEY `refresh_tokens_ibfk_1`;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:36:58 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:36:58 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:36:58 [info]: 🔄 Starting database initialization...
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:36:58 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:36:58 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:36:58 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 11:36:58 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:36:58 [info]: ℹ️ Maps already exist, skipping map seeding
+2025-11-24 11:36:58 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:36:58 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:39:47 [error]: Erreur lors du gain d'XP: WHERE parameter "joueurId" has invalid "undefined" value
+2025-11-24 11:40:07 [info]: 🚀 Server is starting...
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:40:07 [info]: ✅ Database connection established successfully.
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_37' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_37`;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_38' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_38`;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='cases' AND constraint_name = 'cases_ibfk_1' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` DROP FOREIGN KEY `cases_ibfk_1`;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:40:07 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:40:07 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='refresh_tokens' AND constraint_name = 'refresh_tokens_ibfk_1' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `refresh_tokens` DROP FOREIGN KEY `refresh_tokens_ibfk_1`;
+2025-11-24 11:40:07 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:40:08 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:40:08 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:40:08 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:40:08 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:40:08 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:40:08 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:40:08 [info]: 🔄 Starting database initialization...
+2025-11-24 11:40:08 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:40:08 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:40:08 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:40:08 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:40:08 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:40:08 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:40:08 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:40:08 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 11:40:08 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:40:08 [info]: ℹ️ Maps already exist, skipping map seeding
+2025-11-24 11:40:08 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:40:08 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:40:10 [debug]: Executing (default): SELECT `id`, `nom`, `joueurId`, `typeId`, `hp`, `hpMax`, `att`, `def`, `xp`, `niveau`, `pointsDisponibles`, `positionX`, `positionY`, `inventaire`, `createdAt`, `updatedAt` FROM `characters` AS `Character` WHERE `Character`.`id` = '1' AND `Character`.`joueurId` = 2;
+2025-11-24 11:40:10 [debug]: Executing (default): UPDATE `characters` SET `xp`=?,`updatedAt`=? WHERE `id` = ?
+2025-11-24 11:42:51 [error]: Erreur lors de la répartition des points: WHERE parameter "joueurId" has invalid "undefined" value
+2025-11-24 11:43:02 [info]: 🚀 Server is starting...
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 11:43:02 [info]: ✅ Database connection established successfully.
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `username` `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `role` `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `avatar` `avatar` VARCHAR(255);
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `bio` `bio` TEXT;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `dateInscription` `dateInscription` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW INDEX FROM `users`
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'character_types' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `character_types`;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'character_types' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusHP` `bonusHP` INTEGER;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusATT` `bonusATT` INTEGER;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `bonusDEF` `bonusDEF` INTEGER;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `character_types` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW INDEX FROM `character_types`
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'characters' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `characters`;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'characters' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `nom` `nom` VARCHAR(50) NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_39' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_39`;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`joueurId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='characters' AND constraint_name = 'characters_ibfk_40' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` DROP FOREIGN KEY `characters_ibfk_40`;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` ADD FOREIGN KEY (`typeId`) REFERENCES `character_types` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hp` `hp` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `hpMax` `hpMax` INTEGER NOT NULL DEFAULT 100;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `att` `att` INTEGER NOT NULL DEFAULT 10;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `def` `def` INTEGER NOT NULL DEFAULT 5;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `xp` `xp` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `niveau` `niveau` INTEGER NOT NULL DEFAULT 1;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `pointsDisponibles` `pointsDisponibles` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionX` `positionX` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `positionY` `positionY` INTEGER NOT NULL DEFAULT 0;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `inventaire` `inventaire` JSON;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `characters` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW INDEX FROM `characters`
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'maps' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `maps`;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'maps' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `name` `name` VARCHAR(100) NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `width` `width` INTEGER NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `height` `height` INTEGER NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `description` `description` TEXT;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `maps` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW INDEX FROM `maps`
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'cases' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `cases`;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'cases' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='cases' AND constraint_name = 'cases_ibfk_1' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` DROP FOREIGN KEY `cases_ibfk_1`;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` ADD FOREIGN KEY (`map_id`) REFERENCES `maps` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `x` `x` INTEGER NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `y` `y` INTEGER NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `terrain_type` `terrain_type` VARCHAR(50) NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `blocked` `blocked` TINYINT(1) NOT NULL DEFAULT false;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `options` `options` JSON;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `cases` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW INDEX FROM `cases`
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'spells' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `spells`;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'spells' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `name` `name` VARCHAR(255) UNIQUE;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `description` `description` VARCHAR(255);
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `power` `power` INTEGER;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `type` `type` VARCHAR(255);
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `minLevel` `minLevel` INTEGER;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `spells` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW INDEX FROM `spells`
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'refresh_tokens' AND TABLE_SCHEMA = 'projet_mmo_nodejs'
+2025-11-24 11:43:02 [debug]: Executing (default): SHOW FULL COLUMNS FROM `refresh_tokens`;
+2025-11-24 11:43:02 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'refresh_tokens' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='projet_mmo_nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 11:43:02 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `token` `token` VARCHAR(500) NOT NULL UNIQUE;
+2025-11-24 11:43:03 [debug]: Executing (default): SELECT CONSTRAINT_CATALOG AS constraintCatalog, CONSTRAINT_NAME AS constraintName, CONSTRAINT_SCHEMA AS constraintSchema, CONSTRAINT_TYPE AS constraintType, TABLE_NAME AS tableName, TABLE_SCHEMA AS tableSchema from INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE table_name='refresh_tokens' AND constraint_name = 'refresh_tokens_ibfk_1' AND TABLE_SCHEMA = 'projet_mmo_nodejs';
+2025-11-24 11:43:03 [debug]: Executing (default): ALTER TABLE `refresh_tokens` DROP FOREIGN KEY `refresh_tokens_ibfk_1`;
+2025-11-24 11:43:03 [debug]: Executing (default): ALTER TABLE `refresh_tokens` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2025-11-24 11:43:03 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `expiresAt` `expiresAt` DATETIME NOT NULL;
+2025-11-24 11:43:03 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `isRevoked` `isRevoked` TINYINT(1) DEFAULT false;
+2025-11-24 11:43:03 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-11-24 11:43:03 [debug]: Executing (default): ALTER TABLE `refresh_tokens` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-11-24 11:43:03 [debug]: Executing (default): SHOW INDEX FROM `refresh_tokens`
+2025-11-24 11:43:03 [info]: ✅ Database synchronized successfully.
+2025-11-24 11:43:03 [info]: 🔄 Starting database initialization...
+2025-11-24 11:43:03 [debug]: Executing (default): SELECT count(*) AS `count` FROM `users` AS `User`;
+2025-11-24 11:43:03 [info]: ℹ️ Users already exist, skipping user initialization
+2025-11-24 11:43:03 [debug]: Executing (default): SELECT count(*) AS `count` FROM `spells` AS `Spell`;
+2025-11-24 11:43:03 [debug]: Executing (default): SELECT count(*) AS `count` FROM `character_types` AS `CharacterType`;
+2025-11-24 11:43:03 [info]: ℹ️ Character types already exist, skipping types initialization
+2025-11-24 11:43:03 [debug]: Executing (default): SELECT `id`, `username`, `email`, `passwordHash`, `role`, `avatar`, `bio`, `dateInscription`, `updatedAt` FROM `users` AS `User` WHERE `User`.`username` = 'player1';
+2025-11-24 11:43:03 [debug]: Executing (default): SELECT count(*) AS `count` FROM `characters` AS `Character` WHERE `Character`.`joueurId` = 2;
+2025-11-24 11:43:03 [info]: ℹ️ Player already has characters, skipping starter character creation
+2025-11-24 11:43:03 [debug]: Executing (default): SELECT count(*) AS `count` FROM `maps` AS `Map`;
+2025-11-24 11:43:03 [info]: ℹ️ Maps already exist, skipping map seeding
+2025-11-24 11:43:03 [info]: ✅ Database initialization completed successfully
+2025-11-24 11:43:03 [info]: 🚀 Server is running on port 3002
+2025-11-24 11:43:25 [debug]: Executing (default): SELECT `id`, `nom`, `joueurId`, `typeId`, `hp`, `hpMax`, `att`, `def`, `xp`, `niveau`, `pointsDisponibles`, `positionX`, `positionY`, `inventaire`, `createdAt`, `updatedAt` FROM `characters` AS `Character` WHERE `Character`.`id` = '1' AND `Character`.`joueurId` = 2;
+2025-11-24 11:43:45 [debug]: Executing (default): SELECT `id`, `nom`, `joueurId`, `typeId`, `hp`, `hpMax`, `att`, `def`, `xp`, `niveau`, `pointsDisponibles`, `positionX`, `positionY`, `inventaire`, `createdAt`, `updatedAt` FROM `characters` AS `Character` WHERE `Character`.`id` = '1' AND `Character`.`joueurId` = 2;
