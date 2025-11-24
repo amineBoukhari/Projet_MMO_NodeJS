@@ -12,7 +12,7 @@ passport.use(
 		},
 		async (jwtPayload, done) => {
 			try {
-				const user = await User.getUser(jwtPayload.sub);
+				const user = await User.findByPk(jwtPayload.sub);
 				if (!user) {
 					return done(null, false);
 				}

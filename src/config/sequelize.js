@@ -28,8 +28,6 @@ const sequelizeConnect = async () => {
 // Function to synchronize models with the database
 const syncDatabase = async (options = {}) => {
   try {
-    // force: true => DROP existing tables
-    // alter: true => modify tables to match models
     await sequelize.sync(options);
     logger.info('🔄 Database synchronized!');
   } catch (error) {
