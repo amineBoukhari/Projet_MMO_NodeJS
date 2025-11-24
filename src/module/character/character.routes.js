@@ -1,5 +1,6 @@
 import express from 'express';
 import passport from 'passport';
+
 import {
   getMyCharacters,
   getCharacterById,
@@ -10,10 +11,15 @@ import {
   deleteCharacter
 } from './character.controller.js';
 
+import { authMiddleware, adminMiddleware } from '../../middleware/auth.middleware.js';
+
 const router = express.Router();
 
-
-
+/**
+ * Toutes les routes personnages doivent être protégées.
+ * Le joueur doit être connecté pour accéder aux personnages.
+ */
+router.use(authMiddleware);
 
 // GET /personnages - Récupérer tous les personnages du joueur connecté
 router.get('/', getMyCharacters);
@@ -33,7 +39,9 @@ router.patch('/:id/stats', allocateStatPoints);
 // PUT /personnages/:id - Mettre à jour un personnage (nom, position, etc.)
 router.put('/:id', updateCharacter);
 
-// DELETE /personnages/:id - Supprimer un personnage
+// DELETE /personnages/:id - Supprimer un personnage (admin ou propriétaire)
 router.delete('/:id', deleteCharacter);
+// si tu veux restreindre aux admins :
+// router.delete('/:id', adminMiddleware, deleteCharacter);
 
 export default router;

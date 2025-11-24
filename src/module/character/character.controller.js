@@ -14,7 +14,7 @@ import logger from '../../config/logger.js';
  */
 export const getMyCharacters = async (req, res) => {
   try {
-    const userId = req.user?.id || 2;
+    const userId = req.user?.id;
 
     const characters = await Character.findAll({
       where: { joueurId: userId },
@@ -251,7 +251,7 @@ export const gainExperience = async (req, res) => {
     };
 
     if (levelsGained.length > 0) {
-      response.message += ` - Niveau ${levelsGained.length > 1 ? 'x' : ''}${levelsGained.join(', ')} atteint !`;
+      response.message += ` - Nouveau Niveau atteint !`;
       logger.info(`Personnage ${character.nom} (ID: ${character.id}) a gagné ${levelsGained.length} niveau(x)`);
     }
 
