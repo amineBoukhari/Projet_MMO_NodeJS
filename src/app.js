@@ -1,10 +1,11 @@
 import express from 'express';
 import config from './config/config.js';
-
-// Import des routes
-
+import passport from './config/passport.js';
 import characterRoutes from './module/character/character.routes.js';
+import mapRoutes from './module/map/map.routes.js';
+import caseRoutes from './module/case/case.routes.js';
 import userRoutes from './module/user/user.route.js';
+import authRoutes from './module/auth/auth.route.js';
 
 
 const app = express();
@@ -19,6 +20,13 @@ app.use('/api/users', userRoutes);
 app.use('/api/personnages', characterRoutes);
 
 // Route de test
+// Routes Map & Cases
+app.use('/api', mapRoutes);
+app.use('/api', caseRoutes);
+// Initialize Passport
+app.use(passport.initialize());
+
+// Test route
 app.get('/', (req, res) => {
   res.json({ 
     message: '✅ MMORPG API Server is running!',
@@ -32,7 +40,15 @@ app.get('/', (req, res) => {
   });
 });
 
+// Health check route
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    message: '✅ API is healthy'
+  });
+});
 // API Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 
 export default app;
