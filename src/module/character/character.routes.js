@@ -8,7 +8,8 @@ import {
   gainExperience,
   allocateStatPoints,
   updateCharacter,
-  deleteCharacter
+  deleteCharacter,
+  moveCharacter
 } from './character.controller.js';
 
 import { authMiddleware, adminMiddleware } from '../../middleware/auth.middleware.js';
@@ -35,6 +36,9 @@ router.patch('/:id/xp', gainExperience);
 
 // PATCH /personnages/:id/stats - Répartir les points de stats
 router.patch('/:id/stats', allocateStatPoints);
+
+// POST /personnages/:id/deplacement - Déplacer un personnage sur la map (A*)
+router.post('/:id/deplacement', moveCharacter);
 
 // PUT /personnages/:id - Mettre à jour un personnage (nom, position, etc.)
 router.put('/:id', updateCharacter);

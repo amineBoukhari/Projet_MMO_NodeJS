@@ -118,6 +118,17 @@ const Character = sequelize.define('Character', {
       min: 0
     }
   },
+  mapId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+    references: {
+      model: 'maps',
+      key: 'id'
+    },
+    onDelete: 'RESTRICT',
+    onUpdate: 'CASCADE'
+  },
   // Inventaire (JSON pour simplicité)
   inventaire: {
     type: DataTypes.JSON,
