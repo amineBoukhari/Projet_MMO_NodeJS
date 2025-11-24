@@ -47,11 +47,7 @@ app.use('/api/maps', mapRoutes);
 app.use('/api/cases', caseRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/personnages', characterRoutes);
-
-// Character Types
 app.use('/api/characterTypes', characterTypeRoutes)
-
-// Spells
 app.use('/api/spells', spellRoutes)
 
 export default app;
