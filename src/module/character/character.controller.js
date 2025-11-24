@@ -7,6 +7,9 @@ import logger from '../../config/logger.js';
 /**
  * Contrôleur pour la gestion des personnages
  */
+import Map from '../map/map.model.js';
+import Case from '../case/case.model.js';
+import { buildGridFromCases, findPath } from '../../services/pathfinding.service.js';
 
 /**
  * GET /personnages
@@ -432,6 +435,106 @@ export const updateCharacter = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Erreur serveur lors de la mise à jour du personnage'
+    });
+  }
+};
+
+/**
+ * POST /personnages/:id/deplacement
+ * Calculer un chemin A* et déplacer le personnage sur la map
+ * Body: { x: number, y: number }
+ */
+export const moveCharacter = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { x, y } = req.body;
+    const userId = req.user?.id || 2;
+
+    if (x === undefined || y === undefined) {
+      return res.status(400).json({
+        success: false,
+        message: 'Les coordonnées x et y sont obligatoires'
+      });
+    }
+
+    const character = await Character.findOne({
+      where: {
+        id,
+        joueurId: userId
+      }
+    });
+
+    if (!character) {
+      return res.status(404).json({
+        success: false,
+        message: 'Personnage non trouvé'
+      });
+    }
+
+    const mapId = character.mapId || 1;
+
+    const map = await Map.findByPk(mapId, {
+      include: [
+        {
+          model: Case,
+          as: 'cases'
+        }
+      ]
+    });
+
+    if (!map) {
+      return res.status(404).json({
+        success: false,
+        message: 'Map associée au personnage non trouvée'
+      });
+    }
+
+    if (x < 0 || y < 0 || x >= map.width || y >= map.height) {
+      return res.status(400).json({
+        success: false,
+        message: 'Destination en dehors de la map'
+      });
+    }
+
+    const destinationCase = map.cases.find((c) => c.x === x && c.y === y);
+    if (!destinationCase || destinationCase.blocked) {
+      return res.status(400).json({
+        success: false,
+        message: 'La case de destination est bloquée ou inexistante'
+      });
+    }
+
+    const grid = buildGridFromCases(map.cases, map.width, map.height);
+
+    const start = { x: character.positionX, y: character.positionY };
+    const goal = { x, y };
+
+    const path = findPath(grid, start, goal);
+
+    if (!path) {
+      return res.status(400).json({
+        success: false,
+        message: 'Aucun chemin disponible jusqu\'à la destination'
+      });
+    }
+
+    character.positionX = x;
+    character.positionY = y;
+    await character.save();
+
+    return res.status(200).json({
+      success: true,
+      message: 'Déplacement effectué',
+      data: {
+        character,
+        path
+      }
+    });
+  } catch (error) {
+    logger.error('Erreur lors du déplacement du personnage:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || 'Erreur serveur lors du déplacement du personnage'
     });
   }
 };
