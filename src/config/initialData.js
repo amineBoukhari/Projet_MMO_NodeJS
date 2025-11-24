@@ -187,42 +187,48 @@ async function seedSpells() {
                 description: 'Projette une puissante boule de feu sur un ennemi.',
                 puissance: 40,
                 type: 'feu',
-                niveauMinimum: 1
+                niveauMinimum: 1,
+                range: 5
             },
             {
                 name: 'Jet d’Eau',
                 description: 'Un jet d’eau qui repousse et blesse légèrement l’ennemi.',
                 puissance: 25,
                 type: 'eau',
-                niveauMinimum: 1
+                niveauMinimum: 1,
+                range: 3
             },
             {
                 name: 'Soin Mineur',
                 description: 'Restaure une petite quantité de points de vie.',
                 puissance: 30,
                 type: 'soin',
-                niveauMinimum: 1
+                niveauMinimum: 1,
+                range: 2
             },
             {
                 name: 'Bouclier Sacré',
                 description: 'Crée un bouclier protecteur augmentant la défense.',
                 puissance: 0,
                 type: 'buff',
-                niveauMinimum: 2
+                niveauMinimum: 2,
+                range: 2
             },
             {
                 name: 'Éclair',
                 description: 'Un éclair foudroyant frappant instantanément la cible.',
                 puissance: 50,
                 type: 'feu',
-                niveauMinimum: 3
+                niveauMinimum: 3,
+                range: 5
             },
             {
                 name: 'Vague de Givre',
                 description: 'Inflige des dégâts de glace et ralentit l’ennemi.',
                 puissance: 35,
                 type: 'eau',
-                niveauMinimum: 2
+                niveauMinimum: 2,
+                range: 3
             }
         ];
 
