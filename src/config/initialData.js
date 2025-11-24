@@ -1,6 +1,6 @@
-import User from '~/models/userModel';
+import User from '../module/user/user.model.js';
 
-import logger from './logger';
+import logger from './logger.js';
 
 async function initialData() {
     try {

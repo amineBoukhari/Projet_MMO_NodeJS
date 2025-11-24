@@ -1,5 +1,5 @@
 import winston from 'winston';
-import config from './config';
+import config from './config.js';
 // Définir les niveaux de logs
 const levels = {
     error: 0, // Logs critiques
@@ -64,4 +64,4 @@ if (config.NODE_ENV === 'development') {
     );
 }
 
-module.exports = logger;
+export default logger;

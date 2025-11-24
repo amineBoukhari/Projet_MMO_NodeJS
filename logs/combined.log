@@ -1,0 +1,13 @@
+2025-11-24 09:31:06 [info]: 🚀 Server is starting...
+2025-11-24 09:31:06 [debug]: Executing (default): SELECT 1+1 AS result
+2025-11-24 09:31:06 [info]: ✅ Database connection established successfully.
+2025-11-24 09:31:06 [debug]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA = '4IW-nodejs'
+2025-11-24 09:31:06 [debug]: Executing (default): SHOW FULL COLUMNS FROM `users`;
+2025-11-24 09:31:06 [debug]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='4IW-nodejs' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-11-24 09:31:06 [debug]: Executing (default): ALTER TABLE `users` ADD `username` VARCHAR(255) NOT NULL UNIQUE;
+2025-11-24 09:31:07 [debug]: Executing (default): ALTER TABLE `users` ADD `passwordHash` VARCHAR(255) NOT NULL;
+2025-11-24 09:31:07 [debug]: Executing (default): ALTER TABLE `users` ADD `role` ENUM('player', 'admin') NOT NULL DEFAULT 'player';
+2025-11-24 09:31:07 [debug]: Executing (default): ALTER TABLE `users` ADD `avatar` VARCHAR(255);
+2025-11-24 09:31:07 [debug]: Executing (default): ALTER TABLE `users` ADD `bio` TEXT;
+2025-11-24 09:31:08 [debug]: Executing (default): ALTER TABLE `users` ADD `dateInscription` DATETIME NOT NULL;
+2025-11-24 09:31:08 [error]: ❌ Unable to connect to the database: Incorrect datetime value: '0000-00-00 00:00:00' for column 'dateInscription' at row 1

@@ -1,0 +1,1 @@
+2025-11-24 09:31:08 [error]: ❌ Unable to connect to the database: Incorrect datetime value: '0000-00-00 00:00:00' for column 'dateInscription' at row 1

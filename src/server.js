@@ -1,9 +1,9 @@
 import http from 'http';
-import app from './app'; // Application Express
-import sequelize from './config/sequelize'; // Connexion Sequelize
-import logger from './config/logger'; // Logger Winston
-import config from './config/config'; // Configuration (PORT, etc.)
-import initialData from './config/initialData'; // Fonction pour initialiser les données
+import app from './app.js'; // Application Express
+import sequelize from './config/sequelize.js'; // Connexion Sequelize
+import logger from './config/logger.js'; // Logger Winston
+import config from './config/config.js'; // Configuration (PORT, etc.)
+import initialData from './config/initialData.js'; // Fonction pour initialiser les données
 
 logger.info("🚀 Server is starting...");
 

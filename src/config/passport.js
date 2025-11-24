@@ -1,7 +1,7 @@
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import passport from 'passport';
-import config from './config';
-import User from '~/models/userModel';
+import config from './config.js';
+import User from '../module/user/user.model.js';
 
 passport.use(
 	new JwtStrategy(
