@@ -1,5 +1,6 @@
 import sequelize from '../config/sequelize.js';
 import CharacterType from '../module/characterType/characterType.model.js';
+import Spell from '../module/spell/spell.model.js';
 import User from '../module/user/user.model.js';
 import RefreshToken from '../module/auth/refreshToken.model.js';
 
@@ -12,7 +13,8 @@ import RefreshToken from '../module/auth/refreshToken.model.js';
 const models = {
   User,
   CharacterType,
-  RefreshToken
+  RefreshToken,
+  Spell
   // Character,
   // Item,
 };
