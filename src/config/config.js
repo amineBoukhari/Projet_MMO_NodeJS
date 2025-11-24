@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import Joi from 'joi';
 dotenv.config();
 
-// Schéma de validation des variables d'environnement
+// Environment variables validation schema
 const envValidate = Joi.object()
     .keys({
         NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
@@ -33,21 +33,21 @@ const envValidate = Joi.object()
     })
     .unknown();
 
-// Validation des variables d'environnement
+// Environment variables validation
 const { value: env, error } = envValidate.prefs({ errors: { label: 'key' } }).validate(process.env);
 
 if (error) {
     throw new Error(`Config env error: ${error.message}`);
 }
 
-// Exporter les configurations
+// Export configurations
 export default {
     NODE_ENV: env.NODE_ENV,
     APP_NAME: env.APP_NAME,
     PORT: env.PORT,
     LIMIT_REQUESTS: env.LIMIT_REQUESTS,
 
-    // Choisir la base de données en fonction de l'environnement (Sequelize URI)
+    // Choose the database based on the environment (Sequelize URI)
     DATABASE_URI: env.NODE_ENV === 'production' ? env.DB_HOST_PROD : env.DB_HOST_DEV,
 
     JWT_ACCESS_TOKEN_SECRET_PRIVATE: Buffer.from(env.JWT_ACCESS_TOKEN_SECRET_PRIVATE, 'base64'),
