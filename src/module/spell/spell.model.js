@@ -17,6 +17,9 @@ const Spell = sequelize.define('Spell',{
     },
     minLevel: {
         type: DataTypes.INTEGER()
+    },
+    range: {
+        type: DataTypes.INTEGER()
     }
 }, {
     tableName: 'spells'

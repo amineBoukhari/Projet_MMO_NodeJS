@@ -29,7 +29,8 @@ export const createSpell = async (req, res) => {
             description: req.body.description,
             power: req.body.power,
             type: req.body.type,
-            minLevel: req.body.minLevel
+            minLevel: req.body.minLevel,
+            range: req.body.range
         });
         res.status(201).json(spell);
     } catch (e) {
@@ -44,7 +45,8 @@ export const updateSpell = async (req, res) => {
             description: req.body.description,
             power: req.body.power,
             type: req.body.type,
-            minLevel: req.body.minLevel
+            minLevel: req.body.minLevel,
+            range: req.body.range
         }, {
             where: {
                 id: req.params.id
