@@ -220,6 +220,7 @@ Character.prototype.addXp = function(amount) {
   return levelsGained;
 };
 
+
 Character.prototype.allocateStatPoints = function(statDistribution) {
   const { hp, att, def } = statDistribution;
   const totalPoints = (hp || 0) + (att || 0) + (def || 0);
