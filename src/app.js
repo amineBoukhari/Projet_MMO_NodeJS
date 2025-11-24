@@ -1,6 +1,5 @@
 import express from 'express';
 import config from './config/config.js';
-import passport from './config/passport.js';
 
 // Import des routes
 import userRoutes from './module/user/user.routes.js';
@@ -13,13 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Initialiser Passport
-app.use(passport.initialize());
 
 // Routes API
 app.use('/api/users', userRoutes);
 app.use('/api/personnages', characterRoutes);
-app.use('/api/admin/character-types', characterTypeRoutes);
 
 // Route de test
 app.get('/', (req, res) => {
