@@ -1,11 +1,15 @@
 import express from 'express';
 import config from './config/config.js';
+import mapRoutes from './module/map/map.routes.js';
 
 const app = express();
 
 // Middleware to parse JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Routes Map & Cases
+app.use('/api', mapRoutes);
 
 // Test route
 app.get('/', (req, res) => {
