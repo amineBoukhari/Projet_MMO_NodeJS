@@ -5,6 +5,8 @@ import characterRoutes from './module/character/character.routes.js';
 import mapRoutes from './module/map/map.routes.js';
 import caseRoutes from './module/case/case.routes.js';
 import userRoutes from './module/user/user.route.js';
+import characterTypeRoutes from './module/characterType/characterType.route.js';
+import spellRoutes from './module/spell/spell.route.js';
 import authRoutes from './module/auth/auth.route.js';
 
 const app = express();
@@ -45,5 +47,11 @@ app.use('/api/maps', mapRoutes);
 app.use('/api/cases', caseRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/personnages', characterRoutes);
+
+// Character Types
+app.use('/api/characterTypes', characterTypeRoutes)
+
+// Spells
+app.use('/api/spells', spellRoutes)
 
 export default app;

@@ -6,6 +6,7 @@ import Map from '../module/map/map.model.js';
 import Case from '../module/case/case.model.js';
 import bcrypt from 'bcrypt';
 import logger from './logger.js';
+import Spell from '../module/spell/spell.model.js';
 
 /**
  * Seed default users (admin and player)
@@ -176,6 +177,63 @@ async function seedMaps() {
   logger.info(`✅ Map "${map.name}" created with ${cases.length} cases`);
 }
 
+async function seedSpells() {
+    const spellsCount = await Spell.count();
+    if (spellsCount === 0) {
+
+        const spellsData = [
+            {
+                name: 'Boule de Feu',
+                description: 'Projette une puissante boule de feu sur un ennemi.',
+                puissance: 40,
+                type: 'feu',
+                niveauMinimum: 1
+            },
+            {
+                name: 'Jet d’Eau',
+                description: 'Un jet d’eau qui repousse et blesse légèrement l’ennemi.',
+                puissance: 25,
+                type: 'eau',
+                niveauMinimum: 1
+            },
+            {
+                name: 'Soin Mineur',
+                description: 'Restaure une petite quantité de points de vie.',
+                puissance: 30,
+                type: 'soin',
+                niveauMinimum: 1
+            },
+            {
+                name: 'Bouclier Sacré',
+                description: 'Crée un bouclier protecteur augmentant la défense.',
+                puissance: 0,
+                type: 'buff',
+                niveauMinimum: 2
+            },
+            {
+                name: 'Éclair',
+                description: 'Un éclair foudroyant frappant instantanément la cible.',
+                puissance: 50,
+                type: 'feu',
+                niveauMinimum: 3
+            },
+            {
+                name: 'Vague de Givre',
+                description: 'Inflige des dégâts de glace et ralentit l’ennemi.',
+                puissance: 35,
+                type: 'eau',
+                niveauMinimum: 2
+            }
+        ];
+
+        for (const spell of spellsData) {
+            await Spell.create(spell);
+        }
+
+        logger.info('✅ Default spells created successfully');
+    }
+}
+
 /**
  * Main initialization function
  * Called on server startup to populate database with initial data
@@ -185,6 +243,7 @@ async function initialData() {
     logger.info('🔄 Starting database initialization...');
     
     await seedUsers();
+    await seedSpells();
     await seedCharacterTypes();
     await seedStarterCharacters();
     await seedMaps();
