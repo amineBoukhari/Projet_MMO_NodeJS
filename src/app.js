@@ -1,6 +1,8 @@
 import express from 'express';
 import config from './config/config.js';
 import userRoutes from './module/user/user.route.js';
+import characterTypeRoutes from './module/characterType/characterType.route.js';
+import spellRoutes from './module/spell/spell.route.js';
 
 const app = express();
 
@@ -18,5 +20,11 @@ app.get('/', (req, res) => {
 
 // API Routes
 app.use('/api/users', userRoutes);
+
+// Character Types
+app.use('/api/characterTypes', characterTypeRoutes)
+
+// Spells
+app.use('/api/spells', spellRoutes)
 
 export default app;

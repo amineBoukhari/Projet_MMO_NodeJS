@@ -1,66 +1,69 @@
-const Post = require("../posts/post.model.js");
-const User = require("./spell.model.js")
-const Role = require("./spell.model.js")
+import CharacterType from "./characterType.model.js";
 
-exports.get = async (req, res) => {
+export const getAllCharacterTypes = async (req, res) => {
     try {
-        let roleList = await Role.findAll();
-        res.status(200).json(roleList);
+        let characterTypeList = await CharacterType.findAll();
+        res.status(200).json(characterTypeList);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.getById = async (req, res) => {
+export const getCharacterTypeById = async (req, res) => {
     try {
-        let role = await Role.findOne({
+        let characterType = await CharacterType.findOne({
             where: {
                 id: req.params.id
             },
-            include: [User]
         });
-        res.status(200).json(role);
+        res.status(200).json(characterType);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.create = async (req, res) => {
+export const createCharacterType = async (req, res) => {
     try {
-        let role = await Role.create({
-            title: req.body.title,
-            code: req.body.code
+        let characterType = await CharacterType.create({
+            name: req.body.name,
+            description: req.body.description,
+            bonusHP: req.body.bonusHP,
+            bonusATT: req.body.bonusATT,
+            bonusDEF: req.body.bonusDEF
         });
-        res.status(201).json(role);
+        res.status(201).json(characterType);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.update = async (req, res) => {
+export const updateCharacterType = async (req, res) => {
     try {
-        let role = await Role.create({
-            title: req.body.title,
-            code: req.body.code
+        let characterType = await CharacterType.create({
+            name: req.body.name,
+            description: req.body.description,
+            bonusHP: req.body.bonusHP,
+            bonusATT: req.body.bonusATT,
+            bonusDEF: req.body.bonusDEF
         }, {
             where: {
                 id: req.params.id
             }
         });
-        res.status(201).json(role);
+        res.status(201).json(characterType);
     } catch (e) {
         res.status(400).json(e.message);
     }
 }
 
-exports.delete =  async (req, res) => {
+export const deleteCharacterType =  async (req, res) => {
     try {
-        let role = await Role.destroy({
+        let characterType = await characterType.destroy({
             where: {
                 id: req.params.id
             }
         });
-        res.status(200).json(role);
+        res.status(200).json(characterType);
     } catch (e) {
         res.status(400).json(e.message);
     }
