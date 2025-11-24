@@ -9,9 +9,9 @@ import {
 const router = Router();
 
 // CRUD Case (Admin)
-router.post('/cases', createCase);
-router.get('/cases/:id', getCaseById);
-router.put('/cases/:id', updateCase);
-router.delete('/cases/:id', deleteCase);
+router.post('/', createCase);
+router.get('/:id', getCaseById);
+router.put('/:id', updateCase);
+router.delete('/:id', deleteCase);
 
 export default router;

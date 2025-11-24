@@ -7,22 +7,12 @@ import caseRoutes from './module/case/case.routes.js';
 import userRoutes from './module/user/user.route.js';
 import authRoutes from './module/auth/auth.route.js';
 
-
 const app = express();
 
 // Middleware to parse JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-// Routes API
-app.use('/api/users', userRoutes);
-app.use('/api/personnages', characterRoutes);
-
-// Route de test
-// Routes Map & Cases
-app.use('/api', mapRoutes);
-app.use('/api', caseRoutes);
 // Initialize Passport
 app.use(passport.initialize());
 
@@ -47,8 +37,13 @@ app.get('/health', (req, res) => {
     message: '✅ API is healthy'
   });
 });
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/maps', mapRoutes);
+app.use('/api/cases', caseRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/personnages', characterRoutes);
 
 export default app;
