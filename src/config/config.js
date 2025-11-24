@@ -47,14 +47,8 @@ export default {
     PORT: env.PORT,
     LIMIT_REQUESTS: env.LIMIT_REQUESTS,
 
-    // Choisir la base de données en fonction de l'environnement
+    // Choisir la base de données en fonction de l'environnement (Sequelize URI)
     DATABASE_URI: env.NODE_ENV === 'production' ? env.DB_HOST_PROD : env.DB_HOST_DEV,
-    DATABASE_OPTIONS: {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        retryWrites: true,
-        w: 'majority'
-    },
 
     JWT_ACCESS_TOKEN_SECRET_PRIVATE: Buffer.from(env.JWT_ACCESS_TOKEN_SECRET_PRIVATE, 'base64'),
     JWT_ACCESS_TOKEN_SECRET_PUBLIC: Buffer.from(env.JWT_ACCESS_TOKEN_SECRET_PUBLIC, 'base64'),

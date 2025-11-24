@@ -1,6 +1,6 @@
 import http from 'http';
 import app from './app'; // Application Express
-import mongooseConnect from './config/mongoose'; // Fonction de connexion MongoDB
+import sequelize from './config/sequelize'; // Connexion Sequelize
 import logger from './config/logger'; // Logger Winston
 import config from './config/config'; // Configuration (PORT, etc.)
 import initialData from './config/initialData'; // Fonction pour initialiser les données
@@ -52,7 +52,25 @@ server.on('listening', () => {
   logger.info(`🚀 Server is running on ${bind}`);
 });
 
-mongooseConnect();
-initialData()
-
-server.listen(port);
+// Synchronisation de la base de données et démarrage du serveur
+(async () => {
+  try {
+    await sequelize.authenticate();
+    logger.info('✅ Database connection established successfully.');
+    
+    // Synchroniser les modèles avec la base de données
+    // force: false => ne supprime pas les tables existantes
+    // alter: true => modifie les tables pour correspondre aux modèles
+    await sequelize.sync({ alter: true });
+    logger.info('✅ Database synchronized successfully.');
+    
+    // Initialiser les données par défaut
+    await initialData();
+    
+    // Démarrer le serveur
+    server.listen(port);
+  } catch (error) {
+    logger.error('❌ Unable to connect to the database:', error);
+    process.exit(1);
+  }
+})();
