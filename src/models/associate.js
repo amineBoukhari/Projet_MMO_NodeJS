@@ -2,6 +2,7 @@ import sequelize from '../config/sequelize.js';
 import CharacterType from '../module/characterType/characterType.model.js';
 import Spell from '../module/spell/spell.model.js';
 import User from '../module/user/user.model.js';
+import Character from '../module/character/character.model.js';
 import RefreshToken from '../module/auth/refreshToken.model.js';
 
 // Import other models here when you create them
@@ -12,12 +13,35 @@ import RefreshToken from '../module/auth/refreshToken.model.js';
 // Define all models
 const models = {
   User,
+  Character,
   CharacterType,
   RefreshToken,
   Spell
-  // Character,
-  // Item,
 };
+
+// Relations User <-> Character
+User.hasMany(Character, { 
+  as: 'characters',
+  foreignKey: 'joueurId',
+  onDelete: 'CASCADE'
+});
+
+Character.belongsTo(User, {
+  as: 'joueur',
+  foreignKey: 'joueurId'
+});
+
+// Relations CharacterType <-> Character
+CharacterType.hasMany(Character, {
+  as: 'characters',
+  foreignKey: 'typeId',
+  onDelete: 'RESTRICT'
+});
+
+Character.belongsTo(CharacterType, {
+  as: 'type',
+  foreignKey: 'typeId'
+});
 
 // Define associations here
 // User has many refresh tokens

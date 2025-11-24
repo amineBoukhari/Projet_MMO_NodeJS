@@ -1,10 +1,12 @@
 import express from 'express';
 import config from './config/config.js';
+import passport from './config/passport.js';
+import characterRoutes from './module/character/character.routes.js';
 import mapRoutes from './module/map/map.routes.js';
 import caseRoutes from './module/case/case.routes.js';
-import passport from './config/passport.js';
 import userRoutes from './module/user/user.route.js';
 import authRoutes from './module/auth/auth.route.js';
+
 
 const app = express();
 
@@ -12,6 +14,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+// Routes API
+app.use('/api/users', userRoutes);
+app.use('/api/personnages', characterRoutes);
+
+// Route de test
 // Routes Map & Cases
 app.use('/api', mapRoutes);
 app.use('/api', caseRoutes);
@@ -21,8 +29,14 @@ app.use(passport.initialize());
 // Test route
 app.get('/', (req, res) => {
   res.json({ 
-    message: '✅ Server is running!',
-    env: config.NODE_ENV
+    message: '✅ MMORPG API Server is running!',
+    env: config.NODE_ENV,
+    version: '1.0.0',
+    endpoints: {
+      users: '/api/users',
+      characters: '/api/personnages',
+      characterTypes: '/api/admin/character-types (admin only)'
+    }
   });
 });
 

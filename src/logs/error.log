@@ -1,0 +1,13 @@
+2025-11-24 10:32:24 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:32:27 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:32:42 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:32:57 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:36:33 [error]: ❌ Error initializing data: Unknown column 'CharacterType.nom' in 'where clause'
+2025-11-24 10:40:00 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:40:38 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:40:39 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:40:43 [error]: Erreur lors de la récupération des personnages: Cannot read properties of undefined (reading 'id')
+2025-11-24 10:41:18 [error]: Erreur lors de la récupération des personnages: Unknown column 'type.nom' in 'field list'
+2025-11-24 10:42:26 [error]: ❌ Error initializing data: Unknown column 'CharacterType.nom' in 'where clause'
+2025-11-24 10:44:08 [error]: Erreur lors de la récupération des personnages: Unknown column 'type.nom' in 'field list'
+2025-11-24 10:44:30 [error]: Erreur lors de la récupération des personnages: Unknown column 'type.nom' in 'field list'
