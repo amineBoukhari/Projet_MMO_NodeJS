@@ -1,6 +1,7 @@
 import express from 'express';
 import config from './config/config.js';
 import passport from './config/passport.js';
+import swagger from './config/swagger.js';
 import characterRoutes from './module/character/character.routes.js';
 import mapRoutes from './module/map/map.routes.js';
 import caseRoutes from './module/case/case.routes.js';
@@ -14,6 +15,11 @@ const app = express();
 // Middleware to parse JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Swagger UI
+if (config.NODE_ENV === 'development') {
+    app.use('/doc', swagger.serve, swagger.setup);
+}
 
 // Initialize Passport
 app.use(passport.initialize());
