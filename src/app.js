@@ -23,12 +23,6 @@ app.get('/', (req, res) => {
   res.json({ 
     message: '✅ MMORPG API Server is running!',
     env: config.NODE_ENV,
-    version: '1.0.0',
-    endpoints: {
-      users: '/api/users',
-      characters: '/api/personnages',
-      characterTypes: '/api/admin/character-types (admin only)'
-    }
   });
 });
 
