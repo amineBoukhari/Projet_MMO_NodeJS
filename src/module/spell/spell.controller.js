@@ -1,6 +1,5 @@
-const Post = require("../posts/post.model.js");
-const User = require("./spell.model.js")
-const Role = require("./spell.model.js")
+import Character from "../character/character.model.js";
+import Spell from "./spell.model.js";
 
 exports.getAll = async (req, res) => {
     try {
@@ -66,10 +65,40 @@ exports.delete =  async (req, res) => {
     }
 }
 
-exports.attack = async (req, res) => {
+export const attack = async (req, res) => {
+    const attack = await Character.findOne({
+        where: req.params.attack
+    });
 
+    const defense = await Character.findOne({
+        where: req.params.defense
+    })
+
+    const spell = await Spell.findOne({
+        where: req.params.spell
+    })
+
+    if(attack.isKo || defense.isKo) {
+        return res.redirect(`/api/spell/fight/end/${req.params.attack}/${req.params.defense}}`);
+    }
+    
+    Spell.attack(attack, spell, defense)
 }
 
-exports.endFight = async (req, res) => {
-    return true;
+export const endFight = async (req, res) => {
+    const attack = await Character.findOne({
+        where: req.params.attack
+    });
+
+    const defense = await Character.findOne({
+        where: req.params.defense
+    })
+
+    if (attack.isKo){
+        return res.status(200).json({message: "Vous avez perdu !"})
+    }
+
+    if (defense.isKo){
+        return res.status(200).json({message: "Vous avez gagné !"})
+    }
 }
